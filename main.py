@@ -17,7 +17,6 @@ clock = pygame.time.Clock()
 tick = 0
 
 pygame.display.set_caption("pyBeats - syfenx@gmail.com")
-
 pygame.key.set_repeat (50, 5)
 
 #speed = 100
@@ -29,17 +28,9 @@ orange = (255,112,60)
 BASS_Init(-1, 44100, 0, 0, 0)
 
 bpm = 160
-#timer_seconds = 0
-sample_dir = "samples\\"
-
-
 screen_width = pygame.Surface.get_width(screen)
 screen_height = pygame.Surface.get_height(screen)
-
 current_instrument = "samples\\kick.wav"
-
-
-
 running = 1
 
 mouse_middle = 2
@@ -61,15 +52,10 @@ main_lines = MainLines(screen_width, screen)
 
 loadproject(audioitems, screen,'project.txt')
 
-
-
-
 while running:
   pygame.display.update()
   dt = clock.tick(60)
   speed = 1 / float(dt)
-
-  #event = pygame.event.wait()
 
   for event in pygame.event.get():
     mpos = pygame.mouse.get_pos()
@@ -158,16 +144,8 @@ while running:
             except IndexError as e:
                     print(e, 'remove item')
 
-
-
   screen.fill((20, 20, 20))
-  #pygame.transform.scale(screen, (1024*2,768*2))
 
- 
-
- 
-
-  #drawLines()
   main_lines.drawlines()
   '''
   loop_left = pygame.Rect([200,0,2,screen_height])
@@ -208,18 +186,6 @@ while running:
 
   playhead.draw(tick)
   drawText(screen, 6,6, str(bpm))
-
-  if( pygame.key.get_pressed()[pygame.K_EQUALS] != 0 ): # + speed
-    if bpm >= 999:
-        bpm=999
-    else:
-        bpm+=1
-
-  if( pygame.key.get_pressed()[pygame.K_MINUS] != 0 ): # - speed
-    if bpm <= 10:
-        bpm=10
-    else:
-        bpm-=1
 
   #current_instrument = keypress_manager()
 
