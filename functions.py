@@ -5,7 +5,7 @@ pygame.font.init()
 font = pygame.font.Font('coders_crux.ttf', 16)
 
 
-audioitems = []
+
 
 #---------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ class AudioItem(object):
         self.set_volume(self.volume)
         self.screen = screen
         #BASS_ChannelSetFX(self.filePlayerHandle,BASS_FX_DX8_GARGLE,1)
-        BASS_ChannelSetFX(self.filePlayerHandle,BASS_FX_DX8_FLANGER,1)
+        #BASS_ChannelSetFX(self.filePlayerHandle,BASS_FX_DX8_FLANGER,1)
     def draw(self, x, y, w, h):
         self.x = int(math.floor(x))
         self.y = int(math.floor(y))
@@ -102,7 +102,7 @@ def checkSnap(audioitems,lines,n=0):
 #---------------------------------------------------------------------
 
 
-def loadproject(screen,project):
+def loadproject(audioitems,screen,project):
     f = open(project, 'r')
     data = f.readlines()
     if len(data) == 0:
@@ -115,7 +115,7 @@ def loadproject(screen,project):
 
 
 #---------------------------------------------------------------------
-def saveproject():
+def saveproject(audioitems):
     f = open('project.txt', 'w')
     for x in range(0, len(audioitems)):
         ai = audioitems
