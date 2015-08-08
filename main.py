@@ -8,6 +8,8 @@ from pybass import *
 from functions import *
 from mainlines import *
 
+audioitems = []
+
 pygame.init()
 screen = pygame.display.set_mode((1024, 768),RESIZABLE)
 playhead = playhead.Playhead(0, screen, (255,60,99))
@@ -66,7 +68,7 @@ isItemSelected = False
 
 main_lines = MainLines(screen_width, screen)
 
-loadproject(screen,'project.txt')
+loadproject(audioitems, screen,'project.txt')
 
 
 
@@ -263,6 +265,6 @@ while running:
   if( pygame.key.get_pressed()[pygame.K_0] != 0 ):
     current_instrument = "samples\\hc.wav"
 
-saveproject()
+saveproject(audioitems)
 
 pygame.quit()
