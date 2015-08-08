@@ -149,4 +149,15 @@ def keypress_manager(current_instrument):
         current_instrument = "samples\\rs.wav"
     if( pygame.key.get_pressed()[pygame.K_0] != 0 ):
         current_instrument = "samples\\hc.wav"
+    if( pygame.key.get_pressed()[pygame.K_EQUALS] != 0 ): # + speed
+        if bpm >= 999:
+            bpm=999
+        else:
+            bpm+=1
+
+    if( pygame.key.get_pressed()[pygame.K_MINUS] != 0 ): # - speed
+        if bpm <= 10:
+            bpm=10
+        else:
+            bpm-=1
     return current_instrument
