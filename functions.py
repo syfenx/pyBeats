@@ -25,7 +25,7 @@ class AudioItem(object):
         self.set_volume(self.volume)
         self.screen = screen
         #BASS_ChannelSetFX(self.filePlayerHandle,BASS_FX_DX8_GARGLE,1)
-        #BASS_ChannelSetFX(self.filePlayerHandle,BASS_FX_DX8_FLANGER,1)
+        BASS_ChannelSetFX(self.filePlayerHandle,BASS_FX_DX8_FLANGER,1)
     def draw(self, x, y, w, h):
         self.x = int(math.floor(x))
         self.y = int(math.floor(y))
