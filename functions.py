@@ -89,7 +89,7 @@ def drawText(screen, x, y, text="text", size=16):
 
 #---------------------------------------------------------------------
 #depends on line spacing -1
-def checkSnap(audioitems,lines,n=0):
+def checkSnap(audioitems,main_lines,selected_item,n=0):
     if not len(audioitems) == 0:
         #print('snap')
         try:
@@ -125,3 +125,28 @@ def saveproject(audioitems):
         f.write(str(ai[x].h) + ';')
         f.write(str(ai[x].file) + ';')
         f.write(str(ai[x].volume) + '\n')
+
+#
+
+def keypress_manager(current_instrument):
+    if( pygame.key.get_pressed()[pygame.K_1] != 0 ):
+        current_instrument = "samples\\kick.wav"
+    if( pygame.key.get_pressed()[pygame.K_2] != 0 ):
+        current_instrument = "samples\\sd1.wav"
+    if( pygame.key.get_pressed()[pygame.K_3] != 0 ):
+        current_instrument = "samples\\sd2.wav"
+    if( pygame.key.get_pressed()[pygame.K_4] != 0 ):
+        current_instrument = "samples\\hh.wav"
+    if( pygame.key.get_pressed()[pygame.K_5] != 0 ):
+        current_instrument = "samples\\ohh.wav"
+    if( pygame.key.get_pressed()[pygame.K_6] != 0 ):
+        current_instrument = "samples\\clap.wav"
+    if( pygame.key.get_pressed()[pygame.K_7] != 0 ):
+        current_instrument = "samples\\cymbal.wav"
+    if( pygame.key.get_pressed()[pygame.K_8] != 0 ):
+        current_instrument = "samples\\cb.wav"
+    if( pygame.key.get_pressed()[pygame.K_9] != 0 ):
+        current_instrument = "samples\\rs.wav"
+    if( pygame.key.get_pressed()[pygame.K_0] != 0 ):
+        current_instrument = "samples\\hc.wav"
+    return current_instrument
