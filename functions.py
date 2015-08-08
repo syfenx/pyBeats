@@ -126,7 +126,7 @@ def saveproject(audioitems):
         f.write(str(ai[x].file) + ';')
         f.write(str(ai[x].volume) + '\n')
 
-#
+#---------------------------------------------------------------------
 
 def keypress_manager(current_instrument):
     if( pygame.key.get_pressed()[pygame.K_1] != 0 ):
