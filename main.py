@@ -38,16 +38,7 @@ screen_height = pygame.Surface.get_height(screen)
 
 current_instrument = "samples\\kick.wav"
 
-#depends on line spacing -1
-def checkSnap(n=0):
-    if not len(audioitems) == 0:
-        print('snap')
-        try:
-            for j in range(0, len(main_lines.lines)):
-                if audioitems[selected_item].x >= main_lines.lines[j][0] and audioitems[selected_item].x <= main_lines.lines[j][0]+main_lines.snap_thresh :
-                    audioitems[selected_item].x = main_lines.lines[j][0]
-        except IndexError as e:
-            print("index error (checksnap)", e)
+
 
 running = 1
 
@@ -86,6 +77,7 @@ while running:
     if event.type == QUIT:
       running = 0
     elif event.type == KEYDOWN:
+        current_instrument = keypress_manager(current_instrument)
         if event.key == K_ESCAPE:
             pygame.quit()
             sys.exit()  
@@ -111,7 +103,7 @@ while running:
         if event.button == mouse_left:
             mouse_left_down = False
             selected = False
-            checkSnap()
+            checkSnap(audioitems, main_lines, selected_item)
 
 # Drag audio item with LEFT click 
     if pygame.mouse.get_pressed()[0]:
@@ -124,7 +116,7 @@ while running:
                     current_instrument = audioitems[selected_item].file
                 except IndexError as e:
                     print(e, "drag audio func")
-                checkSnap()
+                checkSnap(audioitems, main_lines, selected_item)
             if selected == False:
                 if not mpos[1] <= 25:
                     for j in range(0, len(main_lines.lines)):
@@ -217,21 +209,6 @@ while running:
   playhead.draw(tick)
   drawText(screen, 6,6, str(bpm))
 
-  #MOUSE SELECTION CODE
-  #if mouse_right_down == True:
-  if pygame.mouse.get_pressed()[2]:
-    clicked_point.append(1) 
-    clicked_point[0]=(mpos[0],mpos[1])
-    #clicked_point[0] = (mpos[0]-mpos_rel[0],mpos[1]-mpos_rel[1])
-    a = pygame.Rect(0,0,0,0)
-    a.topleft = (clicked_point[0][0],clicked_point[0][1])
-    #a.bottom = (mpos[0])
-    #a.w = mpos[0]
-    a.h = mpos[1]
-    pygame.draw.rect(screen, (144,74,186),a, 1)
-
-  
-
   if( pygame.key.get_pressed()[pygame.K_EQUALS] != 0 ): # + speed
     if bpm >= 999:
         bpm=999
@@ -244,26 +221,7 @@ while running:
     else:
         bpm-=1
 
-  if( pygame.key.get_pressed()[pygame.K_1] != 0 ):
-    current_instrument = "samples\\kick.wav"
-  if( pygame.key.get_pressed()[pygame.K_2] != 0 ):
-    current_instrument = "samples\\sd1.wav"
-  if( pygame.key.get_pressed()[pygame.K_3] != 0 ):
-    current_instrument = "samples\\sd2.wav"
-  if( pygame.key.get_pressed()[pygame.K_4] != 0 ):
-    current_instrument = "samples\\hh.wav"
-  if( pygame.key.get_pressed()[pygame.K_5] != 0 ):
-    current_instrument = "samples\\ohh.wav"
-  if( pygame.key.get_pressed()[pygame.K_6] != 0 ):
-    current_instrument = "samples\\clap.wav"
-  if( pygame.key.get_pressed()[pygame.K_7] != 0 ):
-    current_instrument = "samples\\cymbal.wav"
-  if( pygame.key.get_pressed()[pygame.K_8] != 0 ):
-    current_instrument = "samples\\cb.wav"
-  if( pygame.key.get_pressed()[pygame.K_9] != 0 ):
-    current_instrument = "samples\\rs.wav"
-  if( pygame.key.get_pressed()[pygame.K_0] != 0 ):
-    current_instrument = "samples\\hc.wav"
+  #current_instrument = keypress_manager()
 
 saveproject(audioitems)
 
