@@ -1,14 +1,13 @@
 # pyBeats
-Python Sequencer
+Python Beat Sequencer
 
-Windows Only
+Windows and Linux (Linux preferred)
 
 Python 3.4
 
 Dependencies:
 - Pygame
 - Pybass
-- cx_freeze to build an executable
 
 Shortcuts:
 - numbers 1 - 0 (not numpad) are basic sounds / samples, right click to add, left click to delete.
