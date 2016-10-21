@@ -133,9 +133,9 @@ while running:
             mouse_middle_down = False
             print(mouse_middle_down)
             print('middle up')
-            checkSnap()
+            checkSnap(audioitems, main_lines, selected_item)
 
-    if pygame.mouse.get_pressed()[2]:       #RIGHT Click
+    if pygame.mouse.get_pressed()[2]:       # RIGHT Click
 
         for item in range(0, len(audioitems)):
             try:
