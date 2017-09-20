@@ -18,6 +18,7 @@ tick = 0
 
 pygame.display.set_caption("pyBeats - syfenx@gmail.com")
 pygame.key.set_repeat (50, 5)
+# test push to github
 
 #speed = 100
 clicked_point = []
